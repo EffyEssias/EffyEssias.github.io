@@ -1191,3 +1191,13 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 .chapter h3.sub { margin: 26px 0 6px; font-size: 1.3rem; }
 .fig > .shot img { background: #f2f2f2; }
 .projects > li[hidden] { display: none; }
+
+/* hero pet: a pixel cat that wags its tail and blinks */
+.pet-cat { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.pet-cat .cat-tail { transform-box: view-box; transform-origin: 22px 18.5px; animation: cat-wag 1.6s steps(2, jump-none) infinite alternate; }
+.pet-cat .cat-eyes { transform-box: view-box; transform-origin: 16px 9.5px; animation: cat-blink 4.5s infinite; }
+.pet-cat .cat-heart { animation: cat-heart 2.4s steps(3, jump-none) infinite; }
+@keyframes cat-wag { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
+@keyframes cat-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.15); } }
+@keyframes cat-heart { 0% { transform: translateY(1px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-2px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pet-cat * { animation: none !important; } }
