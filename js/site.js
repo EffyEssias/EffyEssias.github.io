@@ -444,20 +444,33 @@
 })();
 
 
-/* The hero cat: a click or tap (or Enter) pets it. It hops, says something and sends up hearts. */
+/* The hero cat: its eyes follow the mouse around the hero, and a click or tap (or Enter) pets it.
+   The frames themselves are in the CSS. */
 (function () {
   var btn = document.querySelector('.pet-btn');
   if (!btn) return;
-  var say = btn.parentNode.querySelector('.pet-say');
-  var words = ['Meow!', 'Mrrp!', 'Purr~', 'Hi there!', 'Meow meow!'];
-  var n = 0, timer;
+  var svg = btn.querySelector('.pet-cat');
+  var gx = 0, gy = 0, queued = false, last = null, timer;
+
+  function look() {
+    queued = false;
+    var r = svg.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    var dx = last.clientX - (r.left + r.width * 0.5), dy = last.clientY - (r.top + r.height * 0.4);
+    var nx = dx < -50 ? -1 : dx > 50 ? 1 : 0, ny = dy < -70 ? -1 : dy > 90 ? 1 : 0;
+    if (nx !== gx || ny !== gy) { gx = nx; gy = ny; svg.style.setProperty('--gx', gx); svg.style.setProperty('--gy', gy); }
+  }
+  addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    last = e;
+    if (!queued) { queued = true; requestAnimationFrame(look); }
+  });
+
   btn.addEventListener('click', function () {
     btn.classList.remove('petted');
-    void btn.offsetWidth;                                   /* restart the hop and hearts */
+    void btn.offsetWidth;                                   /* restart the hop and the heart */
     btn.classList.add('petted');
-    say.textContent = words[n++ % words.length];
-    say.classList.add('show');
     clearTimeout(timer);
-    timer = setTimeout(function () { say.classList.remove('show'); btn.classList.remove('petted'); }, 1500);
+    timer = setTimeout(function () { btn.classList.remove('petted'); }, 1300);
   });
 })();

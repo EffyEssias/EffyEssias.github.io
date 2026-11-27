@@ -1192,36 +1192,49 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 .fig > .shot img { background: #f2f2f2; }
 .projects > li[hidden] { display: none; }
 
-/* hero pet: a pixel cat that wags its tail and blinks */
-.pet-cat { display: block; width: 100%; height: auto; image-rendering: pixelated; }
-.pet-cat .cat-tail { transform-box: view-box; transform-origin: 22px 18.5px; animation: cat-wag 1.6s steps(2, jump-none) infinite alternate; }
-.pet-cat .cat-eyes { transform-box: view-box; transform-origin: 16px 9.5px; animation: cat-blink 4.5s infinite; }
-.pet-cat .cat-heart { animation: cat-heart 2.4s steps(3, jump-none) infinite; }
-@keyframes cat-wag { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
-@keyframes cat-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.15); } }
-@keyframes cat-heart { 0% { transform: translateY(1px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-2px); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .pet-cat * { animation: none !important; } }
-
-/* petting the cat: hover or focus closes its eyes happily, a click makes it hop, say something and send hearts */
+/* Hero cat. Drawn and animated like a sprite: every move is a swap between hand-drawn frames
+   (steps), never a smooth slide or rotation, so the pixels stay on the grid.
+   Idle: breathes, swishes its tail now and then, blinks (sometimes twice).
+   Hover: closes its eyes happily and swishes faster. Click: a little hop and one heart.
+   Its eyes follow the mouse around the hero (js/site.js). */
 .pet-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
 .pet-btn:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
-.pet-cat .cat-happy, .pet-cat .cat-burst { opacity: 0; }
-.pet-btn:hover .cat-eyes, .pet-btn:focus-visible .cat-eyes, .pet-btn.petted .cat-eyes { opacity: 0; }
-.pet-btn:hover .cat-happy, .pet-btn:focus-visible .cat-happy, .pet-btn.petted .cat-happy { opacity: 1; }
-.pet-btn:hover .cat-tail, .pet-btn.petted .cat-tail { animation-duration: .4s; }
-.pet-btn.petted .cat-body { animation: cat-hop .5s steps(4, jump-none); }
-.pet-btn.petted .cat-burst { animation: cat-burst 1s steps(5, jump-none) both; }
-.pet-btn.petted .cat-burst.b2 { animation-delay: .1s; }
-.pet-btn.petted .cat-burst.b3 { animation-delay: .2s; }
-@keyframes cat-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-2px); } }
-@keyframes cat-burst { 0% { opacity: 0; transform: translateY(2px); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-3px); } }
-.pet-say {
-  position: absolute; top: -18px; right: -14px; z-index: 3; pointer-events: none;
-  font: 600 1rem/1 var(--pixel); color: var(--text); background: #fff; border: var(--thin); border-radius: var(--r-s);
-  padding: 6px 10px; box-shadow: 3px 3px 0 var(--edge); rotate: 4deg;
-  opacity: 0; scale: .5; transition: opacity .15s, scale .25s cubic-bezier(.34, 1.56, .64, 1);
+.pet-cat { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.pet-cat g { animation-timing-function: steps(1, end); animation-iteration-count: infinite; }
+
+.pet-cat .cat-head { animation-name: cat-breathe; animation-duration: 3.4s; }
+@keyframes cat-breathe { 0% { transform: none; } 47% { transform: translateY(1px); } 93% { transform: none; } }
+
+.pet-cat .cat-tail-a { animation-name: tail-a; animation-duration: 7.3s; }
+.pet-cat .cat-tail-b { animation-name: tail-b; animation-duration: 7.3s; opacity: 0; }
+.pet-cat .cat-tail-c { animation-name: tail-c; animation-duration: 7.3s; opacity: 0; }
+@keyframes tail-a { 0% { opacity: 1; } 55% { opacity: 0; } 58% { opacity: 1; } 61% { opacity: 0; } 65% { opacity: 1; } 82% { opacity: 0; } 91% { opacity: 1; } }
+@keyframes tail-b { 0% { opacity: 0; } 55% { opacity: 1; } 58% { opacity: 0; } 61% { opacity: 1; } 65% { opacity: 0; } }
+@keyframes tail-c { 0% { opacity: 0; } 82% { opacity: 1; } 91% { opacity: 0; } }
+
+.pet-cat .eye-open { animation-name: eye-open; animation-duration: 5.7s; }
+.pet-cat .eye-half { animation-name: eye-half; animation-duration: 5.7s; opacity: 0; }
+.pet-cat .eye-shut { animation-name: eye-shut; animation-duration: 5.7s; opacity: 0; }
+@keyframes eye-open { 0% { opacity: 1; } 58% { opacity: 0; } 62.5% { opacity: 1; } 86% { opacity: 0; } 89.5% { opacity: 1; } }
+@keyframes eye-half { 0% { opacity: 0; } 58% { opacity: 1; } 59.5% { opacity: 0; } 61% { opacity: 1; } 62.5% { opacity: 0; } 86% { opacity: 1; } 87% { opacity: 0; } 88.5% { opacity: 1; } 89.5% { opacity: 0; } }
+@keyframes eye-shut { 0% { opacity: 0; } 59.5% { opacity: 1; } 61% { opacity: 0; } 87% { opacity: 1; } 88.5% { opacity: 0; } }
+.pet-cat .cat-look { transform: translate(calc(var(--gx, 0) * 1px), calc(var(--gy, 0) * 1px)); }
+
+.pet-cat .eye-happy, .pet-cat .cat-heart { opacity: 0; }
+.pet-btn:hover .eye-open, .pet-btn:hover .eye-half, .pet-btn:hover .eye-shut,
+.pet-btn:focus-visible .eye-open, .pet-btn:focus-visible .eye-half, .pet-btn:focus-visible .eye-shut,
+.pet-btn.petted .eye-open, .pet-btn.petted .eye-half, .pet-btn.petted .eye-shut { animation: none; opacity: 0; }
+.pet-btn:hover .eye-happy, .pet-btn:focus-visible .eye-happy, .pet-btn.petted .eye-happy { opacity: 1; }
+.pet-btn:hover .cat-tail g, .pet-btn.petted .cat-tail g { animation-duration: 1.5s; }
+
+.pet-btn.petted .cat-all { animation: cat-hop .55s steps(1, end) 1; }
+@keyframes cat-hop { 0% { transform: none; } 14% { transform: translateY(-1px); } 28% { transform: translateY(-2px); } 56% { transform: translateY(-1px); } 72% { transform: none; } }
+.pet-btn.petted .cat-heart { animation: cat-heart 1.3s steps(1, end) 1; }
+@keyframes cat-heart {
+  0% { opacity: 1; transform: none; } 22% { transform: translateY(-1px); } 44% { transform: translateY(-2px); }
+  66% { opacity: 1; transform: translateY(-3px); } 74% { opacity: 0; } 81% { opacity: 1; } 88% { opacity: 0; } 100% { opacity: 0; transform: translateY(-3px); }
 }
-.pet-say::after { content: ""; position: absolute; left: 14px; bottom: -6px; width: 9px; height: 9px; background: #fff; border-right: var(--thin); border-bottom: var(--thin); transform: rotate(45deg); }
-.pet-say.show { opacity: 1; scale: 1; }
-.pet-say:empty { display: none; }
-@media (prefers-reduced-motion: reduce) { .pet-say { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .pet-cat g { animation: none !important; }
+  .pet-cat .cat-look { transform: none; }
+}
