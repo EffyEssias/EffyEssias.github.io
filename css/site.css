@@ -943,6 +943,10 @@ html:not(.loaded) .buddy, html:not(.loaded) .rain, html:not(.loaded) .flower, ht
 .figures { display: grid; gap: 14px; margin-top: 18px; }
 .fig { margin: 0; }
 .fig figcaption { margin-top: 8px; }
+.fig-stack { display: grid; gap: 10px; }
+.fig-stack .shot { width: 100%; }
+.fig-stack .shot-tag { left: auto; top: auto; right: 6px; bottom: 6px; }
+.fig-stack .shot img { width: 100%; height: auto; max-width: none; }
 /* which screen a picture belongs to: intro, shop, or shared by both */
 .track { display: inline-block; padding: 2px 9px; font-family: var(--pixel); font-size: 0.85rem; font-weight: 600; color: #fff; background: var(--text); border: var(--thin); }
 .track-intro { background: #2a78ad; border-color: #174663; }
