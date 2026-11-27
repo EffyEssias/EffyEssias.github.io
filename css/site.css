@@ -941,6 +941,12 @@ html:not(.loaded) .buddy, html:not(.loaded) .rain, html:not(.loaded) .flower, ht
 .chapter h2 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
 .chapter h2::before { content: counter(chapter); display: inline-grid; place-items: center; width: 44px; height: 44px; margin-right: 12px; background: var(--text); color: #fff; border-radius: var(--r-s); font-size: 1.35rem; font-weight: 900; vertical-align: 4px; }
 .figures { display: grid; gap: 14px; margin-top: 18px; }
+.fig { margin: 0; }
+.fig figcaption { margin-top: 8px; }
+/* which screen a picture belongs to: intro, shop, or shared by both */
+.track { display: inline-block; padding: 2px 9px; font-family: var(--pixel); font-size: 0.85rem; font-weight: 600; color: #fff; background: var(--text); border: var(--thin); }
+.track-intro { background: #2a78ad; border-color: #174663; }
+.track-shop { background: #b03a7c; border-color: #6b1a49; }
 .note { background: var(--pop); border: var(--thin); border-radius: var(--r); padding: 16px; margin-top: 18px; }
 .note h3 { margin-bottom: 6px; }
 .note p:last-child { margin-bottom: 0; }
@@ -1081,6 +1087,8 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 }
 @media (min-width: 640px) {
   .figures { grid-template-columns: 1fr 1fr; }
+  .fig-wide { grid-column: 1 / -1; }
+  .fig-wide .ph-figure { aspect-ratio: 32 / 10; }
   .contact { grid-template-columns: 1fr 1fr; }
   .facts { grid-template-columns: repeat(4, 1fr); }
   .recs li:nth-child(odd) { transform: rotate(-1.2deg); }

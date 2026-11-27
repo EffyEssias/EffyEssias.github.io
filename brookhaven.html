@@ -35,7 +35,7 @@
   <div class="wrap page-head">
     <ul class="chips" style="margin-bottom:14px"><li class="chip chip-tag">Concept</li><li class="chip">Mobile-first</li><li class="chip">Redesign</li></ul>
     <h1>Brookhaven UI redesign</h1>
-    <p class="lead"><span class="fill">One sentence with your headline result, for example: finding a hair, wearing it and saving the outfit went from X taps to Y.</span></p>
+    <p class="lead"><span class="fill">One sentence with your headline result, for example: a clearer welcome screen and a shop where players find and buy an item in fewer taps.</span></p>
 
     <ul class="facts">
       <li><span>My role</span><strong>UX and UI design, Studio build</strong></li>
@@ -47,7 +47,7 @@
     <div class="window">
       <div class="window-bar"><span>the_result_in_game</span><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
       <div class="window-body">
-        <div class="ph ph-video"><span>20 to 30 second phone clip of the finished editor</span></div>
+        <div class="ph ph-video"><span>20 to 30 second phone clip of the finished welcome screen and shop</span></div>
       </div>
     </div>
     <p class="fineprint">A concept project. I am not affiliated with Voldex or Brookhaven, and I had no access to their data.</p>
@@ -57,47 +57,46 @@
   <div class="sec sec-plain" style="border-bottom:0;padding-top:8px">
   <div class="wrap chapters">
 
+    <!-- The study follows two screens, the intro (welcome screen) and the shop, through the same steps.
+         The intro was finished in two art styles; they share every step until "Final UI", where they sit side by side. -->
     <section class="chapter">
       <h2>Research</h2>
-      <p><span class="fill">What you did: played on a phone, did one task ("find a hair, wear it, save it as an outfit"), counted taps and noted every hesitation. Say where players likely get stuck.</span></p>
+      <p><span class="fill">What you looked at on each screen today, on a phone, and what you noticed. Keep the critique respectful: say what works first, then where players could get stuck.</span></p>
       <div class="figures">
-        <div class="ph ph-figure"><span>Annotated phone screenshots</span></div>
-        <div class="ph ph-figure"><span>Tap count for the task today</span></div>
+        <figure class="fig"><div class="ph ph-figure"><span>Today's welcome screen, annotated</span></div><figcaption><b class="track track-intro">Intro</b></figcaption></figure>
+        <figure class="fig"><div class="ph ph-figure"><span>Today's shop, annotated</span></div><figcaption><b class="track track-shop">Shop</b></figcaption></figure>
       </div>
     </section>
 
     <section class="chapter">
       <h2>Player flow</h2>
-      <p><span class="fill">The steps a player takes today and the steps in your version. Point out which steps you removed and why.</span></p>
+      <p><span class="fill">The steps a player takes on each screen today and in your version. Point out what you removed or made clearer, and why.</span></p>
       <div class="figures">
-        <div class="ph ph-figure"><span>Flow before</span></div>
-        <div class="ph ph-figure"><span>Flow after</span></div>
-      </div>
-    </section>
-
-    <section class="chapter">
-      <h2>Menu structure</h2>
-      <p><span class="fill">How you regrouped the editor's categories, and the reason for each group.</span></p>
-      <div class="figures">
-        <div class="ph ph-figure"><span>Menu map</span></div>
+        <figure class="fig"><div class="ph ph-figure"><span>Flow: join the game to pressing Play</span></div><figcaption><b class="track track-intro">Intro</b></figcaption></figure>
+        <figure class="fig"><div class="ph ph-figure"><span>Flow: open the shop to buying an item</span></div><figcaption><b class="track track-shop">Shop</b></figcaption></figure>
       </div>
     </section>
 
     <section class="chapter">
       <h2>Wireframes</h2>
-      <p><span class="fill">Three grey-box layouts, which one you chose and why. Show the thumb zone and the 44px minimum targets.</span></p>
+      <p><span class="fill">Grey-box layouts for each screen on PC and phone, with the numbered notes. Show one or two layouts you tried and say why you chose this one. Both intro styles use this same layout.</span></p>
       <div class="figures">
-        <div class="ph ph-figure"><span>Three layout options</span></div>
-        <div class="ph ph-figure"><span>Chosen layout with thumb-zone overlay</span></div>
+        <figure class="fig"><div class="ph ph-figure"><span>Welcome screen wireframe, PC and phone</span></div><figcaption><b class="track track-intro">Intro</b></figcaption></figure>
+        <figure class="fig"><div class="ph ph-figure"><span>Shop wireframe, PC and phone</span></div><figcaption><b class="track track-shop">Shop</b></figcaption></figure>
       </div>
     </section>
 
     <section class="chapter">
       <h2>Final UI</h2>
-      <p><span class="fill">The finished screens on phone and PC. Explain the style in one line: it extends the look of Brookhaven's own shop.</span></p>
+      <p><span class="fill">The finished screens on phone and PC. The intro was made in two art styles on the same layout. Say in one line what each style is going for.</span></p>
       <div class="figures">
-        <div class="ph ph-figure"><span>Final phone screens</span></div>
-        <div class="ph ph-figure"><span>The same screen on PC</span></div>
+        <figure class="fig"><div class="ph ph-figure"><span>Welcome screen, style A</span></div><figcaption><b class="track track-intro">Intro, style A</b></figcaption></figure>
+        <figure class="fig"><div class="ph ph-figure"><span>Welcome screen, style B</span></div><figcaption><b class="track track-intro">Intro, style B</b></figcaption></figure>
+        <figure class="fig fig-wide"><div class="ph ph-figure"><span>Finished shop on phone and PC</span></div><figcaption><b class="track track-shop">Shop</b></figcaption></figure>
+      </div>
+      <div class="note">
+        <h3>Which intro style I chose</h3>
+        <p><span class="fill">Two or three differences between style A and B, then your pick and the reason, for example which one fits Brookhaven's own look and reads better on a small screen.</span></p>
       </div>
       <div class="note">
         <h3>How I used AI</h3>
@@ -107,25 +106,16 @@
 
     <section class="chapter">
       <h2>Components</h2>
-      <p><span class="fill">Buttons, tiles and tabs with their states (default, pressed, disabled, selected) and the rules: colour jobs, three text sizes, corner radius, outline weight.</span></p>
+      <p><span class="fill">Buttons, cards and tabs with their states (default, pressed, disabled, selected) and the rules: colour jobs, text sizes, corner radius, outline weight. Show that the intro and the shop use the same parts.</span></p>
       <div class="figures">
-        <div class="ph ph-figure"><span>Component sheet</span></div>
-        <div class="ph ph-figure"><span>One-page style guide</span></div>
-      </div>
-    </section>
-
-    <section class="chapter">
-      <h2>More screens</h2>
-      <p><span class="fill">The same components on other Brookhaven screens: the shop, and the welcome screen in two art styles. One or two sentences on each.</span></p>
-      <div class="figures">
-        <div class="ph ph-figure"><span>Shop: card, price button and states</span></div>
-        <div class="ph ph-figure"><span>Welcome screen in two art styles</span></div>
+        <figure class="fig"><div class="ph ph-figure"><span>Component sheet</span></div><figcaption><b class="track track-shared">Shared</b></figcaption></figure>
+        <figure class="fig"><div class="ph ph-figure"><span>One-page style guide</span></div><figcaption><b class="track track-shared">Shared</b></figcaption></figure>
       </div>
     </section>
 
     <section class="chapter">
       <h2>Result</h2>
-      <p><span class="fill">Before and after tap count, what you would test first with real players, and what you would measure after launch.</span></p>
+      <p><span class="fill">What changed on each screen, with a before and after number if you counted one (taps to buy an item, for example), what you would test first with real players, and what you would measure after launch.</span></p>
       <div class="actions">
         <a class="btn btn-go" href="#contact"><span class="fill">Play the showcase place</span></a>
         <a class="btn" href="index.html#work">See more work</a>
