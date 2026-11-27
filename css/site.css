@@ -1187,3 +1187,6 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 
 .feat-shot { display: block; border: var(--thin); }
 .feat-shot img { display: block; width: 100%; height: auto; }
+
+.chapter h3.sub { margin: 26px 0 6px; font-size: 1.3rem; }
+.fig > .shot img { background: #f2f2f2; }
