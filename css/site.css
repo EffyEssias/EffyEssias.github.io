@@ -945,6 +945,8 @@ html:not(.loaded) .buddy, html:not(.loaded) .rain, html:not(.loaded) .flower, ht
 .fig figcaption { margin-top: 8px; }
 .fig-stack { display: grid; gap: 10px; }
 .fig-stack .shot { width: 100%; }
+.fig > .shot { width: 100%; }
+.fig > .shot img { width: 100%; height: auto; max-width: none; }
 .fig-stack .shot-tag { left: auto; top: auto; right: 6px; bottom: 6px; }
 .fig-stack .shot img { width: 100%; height: auto; max-width: none; }
 /* which screen a picture belongs to: intro, shop, or shared by both */
