@@ -948,7 +948,8 @@ html:not(.loaded) .buddy, html:not(.loaded) .rain, html:not(.loaded) .flower, ht
 .why-cols ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
 .fig-stack { display: grid; gap: 10px; }
 .fig-stack .shot { width: 100%; }
-.fig > .shot { width: 100%; }
+.fig > .shot, .hero-shot { width: 100%; }
+.hero-shot img { width: 100%; height: auto; max-width: none; }
 .fig > .shot img { width: 100%; height: auto; max-width: none; }
 .fig-stack .shot-tag { left: auto; top: auto; right: 6px; bottom: 6px; }
 .fig-stack .shot img { width: 100%; height: auto; max-width: none; }
@@ -1183,3 +1184,6 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
   .mc-cloud { animation: none; left: calc(var(--delay) * -0.7%); }
   .bubble { animation: none; translate: 0 var(--rest); }
 }
+
+.feat-shot { display: block; border: var(--thin); }
+.feat-shot img { display: block; width: 100%; height: auto; }
