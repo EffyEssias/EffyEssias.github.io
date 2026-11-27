@@ -943,6 +943,9 @@ html:not(.loaded) .buddy, html:not(.loaded) .rain, html:not(.loaded) .flower, ht
 .figures { display: grid; gap: 14px; margin-top: 18px; }
 .fig { margin: 0; }
 .fig figcaption { margin-top: 8px; }
+.why-cols { display: grid; gap: 8px 28px; margin-top: 14px; }
+.why-cols h3 { margin: 0 0 6px; font-size: 1.1rem; }
+.why-cols ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
 .fig-stack { display: grid; gap: 10px; }
 .fig-stack .shot { width: 100%; }
 .fig > .shot { width: 100%; }
@@ -1094,6 +1097,7 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 @media (min-width: 640px) {
   .figures { grid-template-columns: 1fr 1fr; }
   .fig-wide { grid-column: 1 / -1; }
+  .why-cols { grid-template-columns: 1fr 1fr; }
   .fig-wide .ph-figure { aspect-ratio: 32 / 10; }
   .contact { grid-template-columns: 1fr 1fr; }
   .facts { grid-template-columns: repeat(4, 1fr); }
