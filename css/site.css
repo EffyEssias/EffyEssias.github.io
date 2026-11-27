@@ -1201,3 +1201,27 @@ a, button, summary, .bubble, .zoom, .pile-item, .pix, .lightbox.can-zoom .lightb
 @keyframes cat-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.15); } }
 @keyframes cat-heart { 0% { transform: translateY(1px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-2px); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .pet-cat * { animation: none !important; } }
+
+/* petting the cat: hover or focus closes its eyes happily, a click makes it hop, say something and send hearts */
+.pet-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.pet-btn:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
+.pet-cat .cat-happy, .pet-cat .cat-burst { opacity: 0; }
+.pet-btn:hover .cat-eyes, .pet-btn:focus-visible .cat-eyes, .pet-btn.petted .cat-eyes { opacity: 0; }
+.pet-btn:hover .cat-happy, .pet-btn:focus-visible .cat-happy, .pet-btn.petted .cat-happy { opacity: 1; }
+.pet-btn:hover .cat-tail, .pet-btn.petted .cat-tail { animation-duration: .4s; }
+.pet-btn.petted .cat-body { animation: cat-hop .5s steps(4, jump-none); }
+.pet-btn.petted .cat-burst { animation: cat-burst 1s steps(5, jump-none) both; }
+.pet-btn.petted .cat-burst.b2 { animation-delay: .1s; }
+.pet-btn.petted .cat-burst.b3 { animation-delay: .2s; }
+@keyframes cat-hop { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-2px); } }
+@keyframes cat-burst { 0% { opacity: 0; transform: translateY(2px); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-3px); } }
+.pet-say {
+  position: absolute; top: -18px; right: -14px; z-index: 3; pointer-events: none;
+  font: 600 1rem/1 var(--pixel); color: var(--text); background: #fff; border: var(--thin); border-radius: var(--r-s);
+  padding: 6px 10px; box-shadow: 3px 3px 0 var(--edge); rotate: 4deg;
+  opacity: 0; scale: .5; transition: opacity .15s, scale .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+.pet-say::after { content: ""; position: absolute; left: 14px; bottom: -6px; width: 9px; height: 9px; background: #fff; border-right: var(--thin); border-bottom: var(--thin); transform: rotate(45deg); }
+.pet-say.show { opacity: 1; scale: 1; }
+.pet-say:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .pet-say { transition: none; } }

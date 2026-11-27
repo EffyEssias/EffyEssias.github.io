@@ -442,3 +442,22 @@
   if (document.readyState === 'complete') go();
   else { addEventListener('load', go); setTimeout(go, 6000); }
 })();
+
+
+/* The hero cat: a click or tap (or Enter) pets it. It hops, says something and sends up hearts. */
+(function () {
+  var btn = document.querySelector('.pet-btn');
+  if (!btn) return;
+  var say = btn.parentNode.querySelector('.pet-say');
+  var words = ['Meow!', 'Mrrp!', 'Purr~', 'Hi there!', 'Meow meow!'];
+  var n = 0, timer;
+  btn.addEventListener('click', function () {
+    btn.classList.remove('petted');
+    void btn.offsetWidth;                                   /* restart the hop and hearts */
+    btn.classList.add('petted');
+    say.textContent = words[n++ % words.length];
+    say.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function () { say.classList.remove('show'); btn.classList.remove('petted'); }, 1500);
+  });
+})();
